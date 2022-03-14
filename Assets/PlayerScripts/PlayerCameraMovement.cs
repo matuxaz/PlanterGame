@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class PlayerCameraMovement : MonoBehaviour
 {
-    [Header("References")]
-
-    [SerializeField] private float sensX = 100f;
-    [SerializeField] private float sensY = 100f;
+    [SerializeField] private float sensX = 1f;
+    [SerializeField] private float sensY = 1f;
 
     [SerializeField] Transform cam = null;
     [SerializeField] Transform orientation = null;
 
     float mouseX;
     float mouseY;
-
-    float multiplier = 0.01f;
-
     float xRotation;
     float yRotation;
 
@@ -31,12 +26,12 @@ public class PlayerCameraMovement : MonoBehaviour
         mouseX = Input.GetAxisRaw("Mouse X");
         mouseY = Input.GetAxisRaw("Mouse Y");
 
-        yRotation += mouseX * sensX * multiplier;
-        xRotation -= mouseY * sensY * multiplier;
+        yRotation += mouseX * sensX;
+        xRotation -= mouseY * sensY;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); //make up and down view clamped
 
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0); //rotate camera
+        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0); //rotate player orientation side to side
     }
 }

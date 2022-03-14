@@ -9,8 +9,8 @@ public static class MeshGenerator
         int width = heightMap.GetLength(0);
         int height = heightMap.GetLength(1);
 
-        float topLeftX = (width - 1) / -2f; //making the middle be 0, 0
-        float topLeftZ = (height - 1) / 2f;
+        float topLeftX = (width - 1) / -2f;
+        float topLeftZ = (height - 1) / 2f; //making the middle 0, 0
 
         MeshData meshData = new MeshData(width, height);
         int vertexIndex = 0;
@@ -20,8 +20,8 @@ public static class MeshGenerator
             for (int x = 0; x < width; x++)
             {
 
-                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightCurve.Evaluate(heightMap[x, y]) * heightMultiplier, topLeftZ - y);
-                meshData.uvs[vertexIndex] = new Vector2(x / (float)width, y / (float)height);
+                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightCurve.Evaluate(heightMap[x, y]) * heightMultiplier, topLeftZ - y); //creating vertices
+                meshData.uvs[vertexIndex] = new Vector2(x / (float)width, y / (float)height); //creating UV array
 
                 if (heightMap[x, y] < 0.5f)
                 {
@@ -32,9 +32,9 @@ public static class MeshGenerator
                     meshData.colors[vertexIndex] = new Color(0, 0, 1);
                 }else meshData.colors[vertexIndex] = new Color(0, 1, 0);
 
-                if (x < width - 1 && y < height - 1)
+                if (x < width - 1 && y < height - 1) //no need to add triangles on the right or bottom vertices
                 {
-                    meshData.AddTriangle(vertexIndex, vertexIndex + width + 1, vertexIndex + width);
+                    meshData.AddTriangle(vertexIndex, vertexIndex + width + 1, vertexIndex + width); //adding triangles
                     meshData.AddTriangle(vertexIndex + width + 1, vertexIndex, vertexIndex + 1);
                 }
                 vertexIndex++;
@@ -61,7 +61,7 @@ public class MeshData
         triangles = new int[(meshWidth - 1) * (meshHeight - 1) * 6];
     }
 
-    public void AddTriangle(int a, int b, int c)
+    public void AddTriangle(int a, int b, int c) //adding vertices indexes for a triangle
     {
         triangles[triangleIndex] = a;
         triangles[triangleIndex + 1] = b;
@@ -69,7 +69,7 @@ public class MeshData
         triangleIndex += 3;
     }
 
-    public Mesh CreateMesh()
+    public Mesh CreateMesh() //creating a mesh object
     {
         Mesh mesh = new Mesh();
 

@@ -34,21 +34,21 @@ public class TerrainGeneration : MonoBehaviour
         falloffMap = FallOffGenerator.GenerateFalloffMap(mapWidth);
     }
 
-    public void generateMap()
+    public void generateMap() //generating a color map
     {
         float[,] noiseMap = PerlinNoise.GenerateNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves, persistance, lacunarity, offset);
 
-        Color[] colorMap = new Color[mapWidth * mapHeight];
+        Color[] colorMap = new Color[mapWidth * mapHeight]; //creating the color map from a noisemap
         for (int y = 0; y < mapHeight; y++)
         {
             for (int x = 0; x < mapWidth; x++)
             {
                 if (useFalloff)
                 {
-                    noiseMap[x, y] = Mathf.Clamp01(noiseMap[x, y] - falloffMap[x, y]);
+                    noiseMap[x, y] = Mathf.Clamp01(noiseMap[x, y] - falloffMap[x, y]); //adding the falloff
                 }
                 float currentHeight = noiseMap[x, y];
-                for(int i = 0; i < regions.Length; i++)
+                for(int i = 0; i < regions.Length; i++) //coloring the pixels by height from regions
                 {
                     if(currentHeight <= regions[i].height)
                     {
@@ -74,19 +74,11 @@ public class TerrainGeneration : MonoBehaviour
             display.DrawTexture(TextureGenerator.TextureFromHeightMap(FallOffGenerator.GenerateFalloffMap(mapWidth)));
         }
 
-
-        void OnValidate()
-        {
-            if (lacunarity < 1) lacunarity = 1;
-            if (octaves < 0) octaves = 0;
-
-            falloffMap = FallOffGenerator.GenerateFalloffMap(mapWidth);
-        }
     }
 }
 
 [System.Serializable]
-public struct TerrainType
+public struct TerrainType //struct for regions array
 {
     public string name;
     public float height;

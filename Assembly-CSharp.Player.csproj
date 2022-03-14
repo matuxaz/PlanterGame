@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5233CCCE-D21E-3610-0490-F99546C57E1F}</ProjectGuid>
+    <ProjectGuid>{72310709-8F56-6F02-FF53-A3BE6DD280A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,11 +65,11 @@
     <Compile Include="Assets\ToolScripts\WateringCan.cs" />
     <Compile Include="Assets\ToolScripts\ToolSway.cs" />
     <Compile Include="Assets\PlayerScripts\MoveCamera.cs" />
+    <Compile Include="Assets\ToolScripts\EnemyAI.cs" />
     <Compile Include="Assets\ToolScripts\SeedProjectile.cs" />
     <Compile Include="Assets\PlayerScripts\PlayerCameraMovement.cs" />
     <Compile Include="Assets\TextureGenerator.cs" />
     <Compile Include="Assets\ToolScripts\Seeder.cs" />
-    <Compile Include="Assets\EnemyAI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
@@ -645,19 +645,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{2ECEF84C-1F5D-7FF9-F61C-C7D41BDE3401}</Project>
+      <Project>{B344759C-4787-EA3F-F69D-4BDBCD00EECF}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{186DAF70-DAC6-3CC5-73F0-8A6F112290ED}</Project>
+      <Project>{B5CD8681-C18D-1E25-EE21-299D28D89AF2}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{0603FBA4-3058-C474-5560-74532D46810F}</Project>
+      <Project>{8E23C0A3-E5D9-F8FD-4538-E605106BCC83}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{220E3899-9113-974C-8788-D91064DB4567}</Project>
+      <Project>{37B4BF5E-A8A5-54BF-8542-20116F7FB207}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
   </ItemGroup>

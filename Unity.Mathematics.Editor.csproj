@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{C86C2D1D-A1D8-E165-B13C-E24E4E9252B3}</ProjectGuid>
+    <ProjectGuid>{CF9E27A4-9E48-33BD-C53F-99AFB35F6D31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.Mathematics.Editor</AssemblyName>
@@ -53,8 +53,11 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.mathematics@1.2.5\Unity.Mathematics.Editor\MatrixDrawer.cs" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.mathematics@1.2.5\Unity.Mathematics.Editor\PrimitiveVectorDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.mathematics@1.2.5\Unity.Mathematics.Editor\MatrixDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.mathematics@1.2.5\Unity.Mathematics.Editor\PostNormalizedVectorDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.mathematics@1.2.5\Unity.Mathematics.Editor\QuaternionDrawer.cs" />
   </ItemGroup>
@@ -662,23 +665,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{220E3899-9113-974C-8788-D91064DB4567}</Project>
+      <Project>{37B4BF5E-A8A5-54BF-8542-20116F7FB207}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{EC0E67D7-B433-8407-43CD-200AAB816201}</Project>
+      <Project>{766FCA4C-793F-5C26-8E13-9837A3CEA117}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{0603FBA4-3058-C474-5560-74532D46810F}</Project>
+      <Project>{8E23C0A3-E5D9-F8FD-4538-E605106BCC83}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{2975A620-4F9E-6D4E-6F06-D6FCB4D7D238}</Project>
+      <Project>{7304B38F-18C7-98B5-00DF-E9551D80FDF7}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{84883E42-5EEE-4BF6-5FE6-901C65E59CAB}</Project>
+      <Project>{9AC5B55C-B1CF-D471-7AF1-D1E81A9E6D6A}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

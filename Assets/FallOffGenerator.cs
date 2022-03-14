@@ -15,7 +15,7 @@ public static class FallOffGenerator
                 float x = i / (float)size * 2 - 1;
                 float y = j / (float)size * 2 - 1;
 
-                float value = Mathf.Max(Mathf.Abs(x), Mathf.Abs(y));
+                float value = Mathf.Max(Mathf.Abs(x), Mathf.Abs(y)); //taking the value closer to the edge
                 map[i, j] = Evaluate(value);
             }
         }
@@ -26,6 +26,6 @@ public static class FallOffGenerator
         float a = 3;
         float b = 4;
 
-        return Mathf.Pow(value, a) / (Mathf.Pow(value, a) + Mathf.Pow(b - b * value, a));
+        return Mathf.Pow(value, a) / (Mathf.Pow(value, a) + Mathf.Pow(b - b * value, a)); //modifying the value to make the falloff map less falloff-y
     }
 }

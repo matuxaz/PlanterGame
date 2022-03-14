@@ -46,23 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit slopeHit;
 
-    private bool OnSlope()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 0.5f))
-        {
-            if (slopeHit.normal != Vector3.up)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    private void Start()
+    private void Start() //getting the rigidbody
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -76,20 +60,37 @@ public class PlayerMovement : MonoBehaviour
         ControlDrag();
         ControlSpeed();
 
-        if (Input.GetKeyDown(jumpKey) && isGrounded)
+        if (Input.GetKeyDown(jumpKey) && isGrounded) //jumping
         {
             Jump();
         }
 
-        if (!isGrounded)
-        {
-
-        }
-
-        slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
+        slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal); //calculating the move direction when on a slope
     }
 
-    void MyInput()
+    private void FixedUpdate()
+    {
+        MovePlayer();
+
+    }
+
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 0.5f)) //checking if we hit something
+        {
+            if (slopeHit.normal != Vector3.up) //checking if standing on a slope
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    void MyInput() //creating a move direction with player input
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
@@ -97,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     }
 
-    void Jump()
+    void Jump() //jumping if on ground
     {
         if (isGrounded)
         {
@@ -106,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ControlSpeed()
+    void ControlSpeed() //sprinting
     {
         if (Input.GetKey(sprintKey) && isGrounded)
         {
@@ -118,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ControlDrag()
+    void ControlDrag() //changing the drag depending on the situation
     {
         if (isGrounded)
         {
@@ -130,14 +131,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        MovePlayer();
-
-    }
-
-
-    void MovePlayer()
+    void MovePlayer() //moving the player
     {
         if (isGrounded)
         {
