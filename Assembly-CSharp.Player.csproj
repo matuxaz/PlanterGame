@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\ToolScripts\RockerProjectile.cs" />
     <Compile Include="Assets\TerrainGeneration.cs" />
     <Compile Include="Assets\FallOffGenerator.cs" />
     <Compile Include="Assets\ToolScripts\Projectile.cs" />
@@ -65,11 +66,13 @@
     <Compile Include="Assets\ToolScripts\WateringCan.cs" />
     <Compile Include="Assets\ToolScripts\ToolSway.cs" />
     <Compile Include="Assets\PlayerScripts\MoveCamera.cs" />
-    <Compile Include="Assets\ToolScripts\EnemyAI.cs" />
+    <Compile Include="Assets\EnemyAI.cs" />
     <Compile Include="Assets\ToolScripts\SeedProjectile.cs" />
     <Compile Include="Assets\PlayerScripts\PlayerCameraMovement.cs" />
+    <Compile Include="Assets\ToolScripts\Launcher.cs" />
     <Compile Include="Assets\TextureGenerator.cs" />
     <Compile Include="Assets\ToolScripts\Seeder.cs" />
+    <Compile Include="Assets\Wings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />

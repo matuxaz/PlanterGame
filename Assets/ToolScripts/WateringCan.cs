@@ -8,21 +8,45 @@ public class WateringCan : MonoBehaviour
     public Camera cam;
     public GameObject water;
     public Transform firePoint;
+    public Transform splashPoint;
 
     public float speed = 10;
     public float fireRate = 20;
 
 
     private float timeToFire;
-        private Vector3 destination;
+    private Vector3 destination;
+
+    PlayerMovement pm;
+    private bool wasGrounded = true;
+    public GameObject splashVfx;
+
+    private void Start()
+    {
+        pm = FindObjectOfType<PlayerMovement>(); //refference to get isGrounded from PlayerMovement
+    }
 
     private void Update()
     {
+
+        if (wasGrounded == false && pm.isGrounded == true)
+        {
+            splash();
+        }
+        wasGrounded = pm.isGrounded;
+
+
         if (Input.GetButton("Fire1") && Time.time >= timeToFire)
         {
             timeToFire = Time.time + 1 / fireRate; 
             Shoot();
         }
+    }
+
+    private void splash()
+    {
+        GameObject spVfx = Instantiate(splashVfx, splashPoint.position, splashPoint.rotation); //creating and destroying explosion
+        Destroy(spVfx, 1);
     }
 
     private void Shoot()

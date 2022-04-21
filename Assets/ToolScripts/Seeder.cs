@@ -8,8 +8,8 @@ public class Seeder : MonoBehaviour
     public GameObject seed;
     public Transform firePoint;
 
-    public float speed = 10;
-    public float fireRate = 20;
+    public float speed = 50;
+    public float fireRate = 15;
 
 
     private float timeToFire;
@@ -29,7 +29,7 @@ public class Seeder : MonoBehaviour
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit)) //find the crosshair position
         {
             destination = hit.point;
         }
@@ -37,10 +37,10 @@ public class Seeder : MonoBehaviour
         {
             destination = ray.GetPoint(1000);
         }
-        InstantiateWater(firePoint);
+        InstantiateSeed(firePoint);
     }
 
-    private void InstantiateWater(Transform firePoint)
+    private void InstantiateSeed(Transform firePoint) //create a projectile at firepoint
     {
         var projectileObj = Instantiate(seed, firePoint.position, Quaternion.identity) as GameObject;
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * speed;

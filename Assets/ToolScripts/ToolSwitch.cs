@@ -15,7 +15,7 @@ public class ToolSwitch : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) //switching with scroll wheel
         {
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
@@ -30,7 +30,7 @@ public class ToolSwitch : MonoBehaviour
                 selectedWeapon--;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) //switching with number keys
         {
             selectedWeapon = 0;
         }
@@ -38,8 +38,12 @@ public class ToolSwitch : MonoBehaviour
         {
             selectedWeapon = 1;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedWeapon = 2;
+        }
 
-        if (previousWeapon != selectedWeapon || weaponDown)
+        if (previousWeapon != selectedWeapon || weaponDown) //do switching if player switched or the switching hasn't ended yet
         {
             if (!weaponDown)
             {
@@ -75,9 +79,9 @@ public class ToolSwitch : MonoBehaviour
         elapsedTime += Time.deltaTime;
         float percentage = elapsedTime / duration;
 
-        transform.localPosition = Vector3.Lerp(startPosition, endPosition, percentage);
+        transform.localPosition = Vector3.Lerp(startPosition, endPosition, percentage); //lower weapon while switching
 
-        if(percentage >= 1)
+        if(percentage >= 1) //change weapon if lowering animation ended
         {
             elapsedTime = 0;
             weaponDown = true;
@@ -89,9 +93,9 @@ public class ToolSwitch : MonoBehaviour
         elapsedTime += Time.deltaTime;
         float percentage = elapsedTime / duration;
 
-        transform.localPosition = Vector3.Lerp(endPosition, startPosition, percentage);
+        transform.localPosition = Vector3.Lerp(endPosition, startPosition, percentage); //switching in animation
 
-        if (percentage >= 1)
+        if (percentage >= 1) //stop switching if animation ended
         {
             elapsedTime = 0;
             weaponDown = false;

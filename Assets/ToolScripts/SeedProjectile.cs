@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class SeedProjectile : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(gameObject, 5);
     }
-
-    // Update is called once per frame
-    void Update()
+    private bool collided;
+    private void OnCollisionEnter(Collision c)
     {
-        
+        if (c.gameObject.tag != "Bullet" && !collided)
+        {
+            collided = true;
+            Destroy(gameObject, 0.1f);
+        }
     }
 }
